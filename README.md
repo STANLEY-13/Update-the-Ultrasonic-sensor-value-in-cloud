@@ -195,8 +195,22 @@ if((new_time-old_time>=uplink_interval)&&(network_joined_status==1)){
     stringComplete = false;
   }
 }
-
 ```
+# UPLINK FORMATTER:
+```
+function Decoder(bytes, port) {
+  // Extract distance from the first two bytes
+  var distance = (bytes[0] << 8) + bytes[1];
+
+  // Convert to centimeters (assuming millimeters are being sent)
+  var distance_in_cm = distance / 100;
+
+  return {
+    "distance": distance_in_cm
+  }
+};
+```
+
 # CIRCUIT DIAGRAM:
 <img width="720" height="1280" alt="image" src="https://github.com/user-attachments/assets/d8b164c4-1429-4e95-a0e1-461c467a436d" />
 
